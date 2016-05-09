@@ -75,7 +75,7 @@ function bro_setup() {
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'bro_custom_background_args', array(
-		'default-color' => 'ffffff',
+		'default-color' => '090834',
 		'default-image' => '',
 	) ) );
 }
@@ -101,7 +101,7 @@ add_action( 'after_setup_theme', 'bro_content_width', 0 );
  */
 function bro_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'bro' ),
+		'name'          => esc_html__( 'Widget Area', 'bro' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'bro' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',

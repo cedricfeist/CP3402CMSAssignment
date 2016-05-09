@@ -11,6 +11,7 @@
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
 		value.bind( function( to ) {
+                    console.log(to);
 			$( '.site-title a' ).text( to );
 		} );
 	} );
@@ -39,4 +40,16 @@
 			}
 		} );
 	} );
+        +	// Custom Header Background Color
+	wp.customize( 'header_color', function( value ) {
+		value.bind( function( to ) {
+			$( '.site-header' ).css( {
+				'background-color': to 
+			});
+                        $( '.nav-menu' ).css( {
+				'background-color': to 
+			});
+		} );
+	} );
+        
 } )( jQuery );
