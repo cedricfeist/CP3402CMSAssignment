@@ -32,9 +32,40 @@ function bro_customize_register( $wp_customize ) {
 		new WP_Customize_Color_Control(
 			$wp_customize,
 			'header_color', array(
-				'label' => __( 'Header Background Color', 'popperscores' ),
+				'label' => __( 'Header Background Color', 'bro' ),
 				'section' => 'colors',
 			)
+		)
+	);
+	// Add section to the Customizer
+	$wp_customize->add_section( 'bro-options', array(
+		'title' => __( 'Theme Options', 'bro' ),
+		'capability' => 'edit_theme_options',
+		'description' => __( 'Change the default display options for the theme.', 'bro' ),
+	));
+	
+	// Create sidebar layout setting
+	$wp_customize->add_setting(	'layout_setting',
+		array(
+			'default' => 'no-sidebar',
+			'type' => 'theme_mod',
+			'sanitize_callback' => 'bro_sanitize_layout', 
+			'transport' => 'postMessage'
+		)
+	);
+
+	// Add sidebar layout controls
+	$wp_customize->add_control(	'layout_control',
+		array(
+			'settings' => 'layout_setting',
+			'type' => 'radio',
+			'label' => __( 'Sidebar position', 'bro' ),
+			'choices' => array(
+				'no-sidebar' => __( 'No sidebar (default)', 'bro' ),
+				'sidebar-left' => __( 'Left sidebar', 'bro' ),
+				'sidebar-right' => __( 'Right sidebar', 'bro' )
+			),
+			'section' => 'bro-options',
 		)
 	);
 	
@@ -50,10 +81,21 @@ function bro_customize_preview_js() {
 add_action( 'customize_preview_init', 'bro_customize_preview_js' );
 
 /**
+ * Sanitize layout options
+ */
+
+function bro_sanitize_layout( $value ) {
+	if ( !in_array( $value, array( 'sidebar-left', 'sidebar-right', 'no-sidebar' ) ) ) {
+		$value = 'no-sidebar';
+	}
+	return $value;
+}
+
+/**
  * Inject Customizer CSS when appropriate
  */
 
-function popperscores_customizer_css() {
+function bro_customizer_css() {
 	$header_color = get_theme_mod('header_color');
 	
 	?>
@@ -64,4 +106,4 @@ function popperscores_customizer_css() {
 </style>
 	<?php
 }
-add_action( 'wp_head', 'popperscores_customizer_css' ); 
+add_action( 'wp_head', 'bro_customizer_css' ); 

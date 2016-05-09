@@ -20,7 +20,7 @@
     </head>
 
     <body <?php body_class(); ?>>
-        <div id="page" class="site">
+        <div id="page" class="site <?php echo get_theme_mod('layout_setting', 'no-sidebar'); ?>">            
             <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'bro'); ?></a>
 
             <?php if (get_header_image()) { ?>
@@ -49,7 +49,9 @@
                         </a>
                     </div>
 
-                    <div class="site-branding<?php if ( is_singular() ) { echo ' screen-reader-text'; } ?>">
+                    <div class="site-branding<?php if (is_singular()) {
+                                echo ' screen-reader-text';
+                            } ?>">
                         <?php if (is_front_page() && is_home()) : ?>
                             <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
                         <?php else : ?>
@@ -61,14 +63,14 @@
                         if ($description || is_customize_preview()) :
                             ?>
                             <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-                        <?php endif;
-                        ?>
+<?php endif;
+?>
                     </div><!-- .site-branding -->
 
                     <nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'bro' ); ?></button>
-                        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'nav-menu' ) ); ?>
-                        
+                        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'bro'); ?></button>
+<?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'nav-menu')); ?>
+
                     </nav><!-- #site-navigation -->
                 </header><!-- #masthead -->
 
