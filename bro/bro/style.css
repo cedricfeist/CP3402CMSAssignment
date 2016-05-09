@@ -302,16 +302,17 @@ h6 {
     margin-bottom: 1rem;
 }
 
-h1 { font-size: 2.4em; }
-h2 { font-size: 2.2em; }
-h3 { font-size: 2em; }
-h4 { font-size: 1.8em; }
-h5 { font-size: 1.6em; }
-h6 { font-size: 1.4em; }
+h1 { font-size: 2.7em; }
+h2 { font-size: 2.1em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 0.8em; }
 
 
 p {
     margin-bottom: 1.5em;
+    font-family: 'Roboto', sans-serif;
 }
 
 dfn,
@@ -467,10 +468,10 @@ input[type="submit"] {
     background: #fff;
     color: #000;
     font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    font-size: 0.75rem;
-    line-height: 1;
-    padding: .6em 1em .4em;
+    font-size: 14px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding: .8em 1.2em .6em;
 }
 
 button:hover,
@@ -533,11 +534,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-    color: #000;
+    color: #059b9a;
 }
 
 a:visited {
-    color: #000;
+    color: #059b9a;
 }
 
 a:hover,
@@ -2394,3 +2395,9 @@ img.alignleft {
 .site-footer a {
 	color: #fff;
 } 
+
+a:hover {
+    color: #059b9a;
+    text-decoration: none;
+}
+
