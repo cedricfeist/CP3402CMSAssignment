@@ -56,25 +56,30 @@
         ?>
     </header><!-- .entry-header -->
 
-    <div class="entry-content index-excerpt">
+    <div class="entry-content">
         <?php
-        the_excerpt();
+          the_content(sprintf(
+				
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'bro' ), array( 'span' => array( 'class' => array() ) ) ),
+				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			) );
+          
+          
+        
         ?>
 
-        <div class="continue-reading">
-            <a href="<?php echo esc_url(get_permalink()); ?>" rel="bookmark">
-
-
-                <?php
-                printf(
-                        wp_kses(__('Continue reading %s', 'bro'), array('span' => array('class' => array()))), the_title('<span class="screen-reader-text">"', '"</span>', false)
-                );
-                ?>
-            </a>
-        </div>
+ 
 
 
     </div><!-- .entry-content -->
+    
+ 
+        
+                
+      
+        
+        
+  
 
 
 </article><!-- #post-## -->
